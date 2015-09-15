@@ -1,0 +1,104 @@
+# ejercicio-escena-con-for-green-de-golf-
+
+
+
+//golf setup!!
+
+//variables
+float x=50;
+float y=150;
+float xB=100;
+float yB=165;
+int andarBolita=0;
+int desapareceBolita=0;
+
+//canvas
+void setup(){
+  size(600,220);
+ 
+
+}
+
+void draw(){
+//Fondo
+  background(56,142,229);
+  
+//muneco
+  stroke(0);
+  strokeWeight(3);
+  fill(253,248,97);
+  triangle(85,100,115,100,100,125);
+  fill(255,224,192); 
+  ellipse(100,90,10,10); 
+  
+//bandera
+  stroke(0);
+  strokeWeight(2);
+  line(300,70,300,170);
+  fill(246,25,25);
+  triangle(300,70,350,85,300,100);
+  
+//Palo de golf
+  stroke(0);
+  strokeWeight(3);
+  line(100,125,x,y);
+  x+=0.7;
+  
+//Movimiento del palo
+  if(x<100){
+  y=y+0.4;
+  }
+  if(x>=100 && x<130){
+   y=y-0.4; 
+  }
+  
+//Fija la posición de la punto del palo al final
+  if(x>110){
+   y=165;
+   x=110;
+  }
+  
+//Acción de andar bolita hacia el hoyo
+  if (x>=95){
+   andarBolita=1; 
+  }
+  
+//statement para que la bolita aparezca y se mueva
+  if (andarBolita==1){
+   fill(255);
+   noStroke();
+   ellipse(xB,yB,13,13); 
+   xB++;
+
+//movimiento en eje X y en Y
+  if (xB>300){
+    xB=300;
+  }
+  if (xB==300){
+    yB+=0.6; 
+  }
+
+  }
+  
+//Posición quieta de la bola
+  if (andarBolita==0){
+   fill(255);
+   noStroke();
+   ellipse(100,165,13,13); 
+  }
+  
+//green=pasto
+ noStroke();
+ fill(15,134,39);
+ ellipse(300,195,500,50);
+
+//nube=cielo 
+  for(int nube=50;nube <= 600; nube = nube+100){
+ noStroke();
+ fill(142,194,246);
+ ellipse(nube-20,35,40,10);
+ ellipse(nube-10,43,40,10);
+ ellipse(nube,33,40,10);
+ ellipse(nube-15,35,25,20);
+  }
+}
